@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/kousuan/kousuan",
-    "pages/index/index",
-    "pages/answer/answer"
+    "pages/test/test",
+    "pages/answer/answer",
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

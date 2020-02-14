@@ -3,15 +3,23 @@
 <van-panel title="听算设置">
   <view class="header-flex">
     <text>计算上限</text>
-    <van-stepper min="10" max="100" value="{{upperLimit}}" step = "10" integer bind:change="upperLimitOnChange"/>
+    <van-stepper min="10" max="100" value="{{upperLimit}}" step = "10" integer bind:change="upperLimitOnChange" disabled="{{stepperDisabled}}" />
   </view>
   <view class="header-flex">
     <text decode="emsp">出题数&emsp;</text>
-    <van-stepper min="5" max="50" value="{{problemNum}}" step = "5" integer bind:change="problemsOnChange"/>
+    <van-stepper min="5" max="50" value="{{problemNum}}" step = "5" integer bind:change="problemsOnChange" disabled="{{stepperDisabled}}"/>
   </view>
   <view class="header-flex">
     <text>时间间隔</text>
-    <van-stepper min="0" max="10" value="{{timeInterval}}" integer bind:change="timeIntervalOnChange"/>
+    <van-stepper min="0" max="10" value="{{timeInterval}}" integer bind:change="timeIntervalOnChange" disabled="{{stepperDisabled}}" />
+  </view>
+  <view class="header-flex">
+    <text decode="emsp">出题类型&emsp;&emsp;</text>
+    <van-checkbox-group value="{{ problemType }}"   bind:change="problemTypeOnChange" >
+    <van-checkbox name="AdditionSubtraction">加减</van-checkbox>
+    <van-checkbox name="Multiplication">乘法</van-checkbox>
+  </van-checkbox-group>
+  <van-toast id="van-toast" />
   </view>
   </van-panel>
 </view>
@@ -22,3 +30,4 @@
     <van-button type="info" disabled="{{anwserButtonisDisabled}}" bind:click="gotoAnswer">显示答案</van-button> 
   </view>
 </view>
+<view class="icon van-icon van-icon van-icon-upgrade van-icon-upgrade" style="font-size: 32rpx;"></view> 

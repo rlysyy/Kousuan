@@ -1,0 +1,2 @@
+<!--pages/test/test.wxml-->
+<van-toast id="van-toast" />

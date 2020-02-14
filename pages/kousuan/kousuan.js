@@ -1,4 +1,4 @@
-
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
 // pages/kousuan/kousuan.js
 Page({
   /**
@@ -7,12 +7,15 @@ Page({
   data: {
     upperLimit:20,
     problemNum:20,
+    listenedNum:0,
     timeInterval:1,
     message:"",
     audioList:[],
+    problemType: ["AdditionSubtraction","Multiplication"],
     tingsuanButtonisDisabled: false,
     repeatButtonisDisabled:true,
     anwserButtonisDisabled: true,
+    stepperDisabled:false,
     firstShow: true
   },
 
@@ -34,6 +37,9 @@ Page({
    */
   onShow: function () {
     console.log('onShow')
+    wx.setKeepScreenOn({
+      keepScreenOn: true
+    })
     this.enableButton();
     try {
       var value = wx.getStorageSync('upperLimit')
@@ -130,7 +136,8 @@ Page({
       //初始化缓存
       this.mySetStorge();
       this.setData({
-        firstShow:false
+        firstShow:false,
+        listenedNum: this.data.problemNum
       })
       wx.request({
         url: url,
@@ -158,18 +165,26 @@ Page({
    * 开始听算
    */
   make_problems: function (token,i){
-    var problemType = this.randomInt(1,4);
+    var problemType = this.data.problemType;
     var max = this.data.upperLimit + 1;
     var problem = "";
-
-    if (problemType == 1) {
-      problem = this.createAddition(max);
-    } else if (problemType == 2) {
-      problem = this.createSubtraction(max);
-    } else if (problemType == 3) {
-      problem = this.createMultiplication();
+    console.log(problemType)
+    if (problemType.indexOf('AdditionSubtraction') > -1 && problemType.indexOf('Multiplication') >-1){
+      var problemTypeLocal = this.randomInt(1, 4);
+    } else if (problemType.indexOf('AdditionSubtraction') > -1){
+      var problemTypeLocal = this.randomInt(1, 3);
+    } else if (problemType.indexOf('Multiplication') > -1){
+      var problemTypeLocal = 3;
     }
 
+    if (problemTypeLocal == 1) {
+      problem = this.createAddition(max);
+    } else if (problemTypeLocal == 2) {
+      problem = this.createSubtraction(max);
+    } else if (problemTypeLocal == 3) {
+      problem = this.createMultiplication();
+    }
+    wx.setStorageSync('problemTxt' + i, problem);
     this.compose(token, problem,i);
   },
 
@@ -217,7 +232,13 @@ Page({
   read_question: function (filePath, token, i,type){
     try{
       var that = this
-      var problemNum = this.data.problemNum + 1
+      var problemNum = 0
+      if (type == 0) {
+        problemNum = this.data.problemNum + 1
+      }else if(type==1){
+        problemNum = this.data.listenedNum + 1
+      }
+
       const innerAudioContext = wx.createInnerAudioContext();
       innerAudioContext.autoplay = true;
       innerAudioContext.src = filePath;
@@ -239,7 +260,6 @@ Page({
             if (type == 0) {
               that.make_problems(token, i)
             } else if (type == 1) {
-              console.log("repeatAudio:" + 1)
               that.repeatAudio(i)
             }
           } else {
@@ -256,7 +276,7 @@ Page({
    * 重听按钮点击事件
    */
   clickRepeat:function(e){
-    this.enableButton();
+    this.disableButton();
     var i = e.currentTarget.dataset.i;
     this.repeatAudio(i);
   },
@@ -302,7 +322,7 @@ Page({
   createAddition:function(max) {
     var a = this.randomInt(2,max-1);
     var b = this.randomInt(1, max - a);
-    var problem = String(a) + "+" + String(b);
+    var problem = String(a) + "加" + String(b);
 
     return problem;
   },
@@ -361,12 +381,14 @@ Page({
     if (this.data.firstShow){
       this.setData({
         tingsuanButtonisDisabled: false,
+        stepperDisabled:false,
         repeatButtonisDisabled: true,
         anwserButtonisDisabled: true
       })
     }else{
       this.setData({
         tingsuanButtonisDisabled: false,
+        stepperDisabled: false,
         repeatButtonisDisabled: false,
         anwserButtonisDisabled: false
       })
@@ -379,12 +401,22 @@ Page({
     this.setData({
       tingsuanButtonisDisabled: true,
       repeatButtonisDisabled: true,
-      anwserButtonisDisabled:true
+      anwserButtonisDisabled:true,
+      stepperDisabled: true,
     })
   },
   gotoAnswer:function(){
     wx.navigateTo({
-      url: '/pages/answer/answer'
+      url: '/pages/answer/answer?listenedNum='+ this.data.listenedNum
     })
+  },
+  problemTypeOnChange:function(event){
+    if (event.detail.length>0){
+      this.setData({
+        problemType: event.detail
+      });
+    }else{
+      Toast('至少选择一种类型');
+    }
   }
 })

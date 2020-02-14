@@ -1,1 +1,7 @@
 /* pages/answer/answer.wxss */
+.answer{
+  border-width: 0 0 1rpx 0;
+  border-color:#F0F0F0;
+  border-style: solid;
+  padding: 5rpx;
+}

@@ -1,2 +1,4 @@
 <!--pages/answer/answer.wxml-->
-<text>pages/answer/answer.wxml</text>
+<view wx:for="{{answerArr}}" wx:key="id" class="answer">
+  <text decode="{{true}}">{{item.id}}:&nbsp;&nbsp;&nbsp;{{item.content}}</text>
+</view>

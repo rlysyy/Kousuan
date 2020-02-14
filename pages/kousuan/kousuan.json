@@ -7,6 +7,8 @@
     "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
     "van-stepper": "/miniprogram_npm/vant-weapp/stepper/index",
     "van-panel": "/miniprogram_npm/vant-weapp/panel/index",
-    "van-popup": "/miniprogram_npm/vant-weapp/popup/index"
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index",
+    "van-toast": "/miniprogram_npm/vant-weapp/toast/index"
   }
 }
