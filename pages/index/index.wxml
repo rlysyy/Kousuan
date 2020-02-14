@@ -1,0 +1,90 @@
+<!--pages/index/index.wxml-->
+<view>
+<view class="top">
+  <van-row class="calcRow">
+      <text class="calcText">{{a}}</text>
+      <text class="calcText">{{symbol}}</text>
+      <text class="calcText">{{b}}</text>
+      <text class="calcText">=</text>
+      <text class="calcText">{{result}}</text>
+  </van-row>
+</view>
+<view class="main">
+  <van-row class="calcButtonRow">
+    <van-col span="6" offset="3">
+      <view id="calcView1" class="calcView" data-num="1" bindtap="inputResult">
+        <text class="calcButton">1</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <view id="calcView2" class="calcView" data-num="2" bindtap="inputResult">
+        <text class="calcButton">2</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <view id="calcView3" class="calcView" data-num="3" bindtap="inputResult">
+        <text class="calcButton">3</text>
+      </view>
+    </van-col>
+  </van-row>
+    <van-row class="calcButtonRow">
+    <van-col span="6" offset="3">
+      <view id="calcView4" class="calcView" class="calcView" data-num="4" bindtap="inputResult">
+        <text class="calcButton">4</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <view id="calcView5" class="calcView" class="calcView" data-num="5" bindtap="inputResult">
+        <text class="calcButton">5</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <view id="calcView6" class="calcView" class="calcView" data-num="6" bindtap="inputResult">
+        <text class="calcButton">6</text>
+      </view>
+    </van-col>
+  </van-row>
+  <van-row class="calcButtonRow">
+    <van-col span="6" offset="3">
+      <view id="calcView7" class="calcView" class="calcView" data-num="7" bindtap="inputResult">
+        <text class="calcButton">7</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <view id="calcView8" class="calcView" class="calcView" data-num="8" bindtap="inputResult">
+        <text class="calcButton">8</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <view id="calcView9" class="calcView" class="calcView" data-num="9" bindtap="inputResult">
+        <text class="calcButton">9</text>
+      </view>
+    </van-col>
+  </van-row>
+    <van-row class="calcButtonRow">
+    <van-col span="6" offset="3">
+      <view id="calcViewdian" class="calcView" class="calcView" data-num="." bindtap="inputResult">
+        <text class="calcButton">.</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <view id="calcView0" class="calcView" class="calcView" data-num="0" bindtap="inputResult">
+        <text class="calcButton">0</text>
+      </view>
+    </van-col>
+    <van-col span="6">
+      <view id="calcViewdel" class="calcView" bindtap="delLastLetter">
+        <view class="calcViewDelIcon">
+          <van-icon name="delete" size= "55px"/>
+        </view>
+      </view>
+    </van-col>
+  </van-row>
+</view>
+<view class="bottom">
+  <van-row class="bottomRow">
+    <van-col span="8"><van-button round size="small" type="primary" class="bottomButton">上一题</van-button></van-col>
+    <van-col span="8" offset="8" ><van-button round size="small" type="primary" class="bottomButton" bind:click="clickNext">下一题</van-button></van-col>
+  </van-row>
+</view>
+</view>

@@ -1,0 +1,24 @@
+<!--pages/kousuan/kousuan.wxml-->
+<view class="header">
+<van-panel title="听算设置">
+  <view class="header-flex">
+    <text>计算上限</text>
+    <van-stepper min="10" max="100" value="{{upperLimit}}" step = "10" integer bind:change="upperLimitOnChange"/>
+  </view>
+  <view class="header-flex">
+    <text decode="emsp">出题数&emsp;</text>
+    <van-stepper min="5" max="50" value="{{problemNum}}" step = "5" integer bind:change="problemsOnChange"/>
+  </view>
+  <view class="header-flex">
+    <text>时间间隔</text>
+    <van-stepper min="0" max="10" value="{{timeInterval}}" integer bind:change="timeIntervalOnChange"/>
+  </view>
+  </van-panel>
+</view>
+<view class="main">
+  <view class="buttonView">
+    <van-button type="primary" disabled="{{tingsuanButtonisDisabled}}" bind:click="tts">开始听算</van-button> 
+    <van-button type="primary" disabled="{{repeatButtonisDisabled}}" data-i="0" bind:click="clickRepeat">重    听</van-button>  
+    <van-button type="info" disabled="{{anwserButtonisDisabled}}" bind:click="gotoAnswer">显示答案</van-button> 
+  </view>
+</view>
