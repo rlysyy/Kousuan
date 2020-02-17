@@ -29,5 +29,7 @@
     <van-button type="primary" disabled="{{repeatButtonisDisabled}}" data-i="0" bind:click="clickRepeat">重    听</van-button>  
     <van-button type="info" disabled="{{anwserButtonisDisabled}}" bind:click="gotoAnswer">显示答案</van-button> 
   </view>
+  <view class="circleView">
+    <van-circle value="{{ circleValue }}" text="{{circleText}}" speed="80" />
+  </view>
 </view>
-<view class="icon van-icon van-icon van-icon-upgrade van-icon-upgrade" style="font-size: 32rpx;"></view> 

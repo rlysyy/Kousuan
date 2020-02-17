@@ -32,3 +32,9 @@ page{
   border-bottom: 1rpx solid #F5F5F5;
   background-color: #FFFFFF
 }
+
+.circleView{
+  display: flex;
+  justify-content:space-around;
+  margin: 50rpx;
+}

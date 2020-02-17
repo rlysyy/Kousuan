@@ -16,7 +16,9 @@ Page({
     repeatButtonisDisabled:true,
     anwserButtonisDisabled: true,
     stepperDisabled:false,
-    firstShow: true
+    firstShow: true,
+    circleValue:0,
+    circleText:0
   },
 
   /**
@@ -253,7 +255,15 @@ Page({
       innerAudioContext.onEnded(() => {
         console.log('播放结束')
         innerAudioContext.destroy()
+
         i = parseInt(i) + 1
+
+        // 设置进度
+        that.setData({
+          circleValue: Math.trunc((i / problemNum) * 100),
+          circleText: Math.trunc((i / problemNum) * 100) + '%'
+        })
+
         var timerName = setTimeout(function () {
           if (i < problemNum) {
             if (type == 0) {
