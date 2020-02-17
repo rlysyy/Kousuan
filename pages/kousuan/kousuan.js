@@ -1,4 +1,4 @@
-import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 // pages/kousuan/kousuan.js
 Page({
   /**
@@ -168,7 +168,6 @@ Page({
     var problemType = this.data.problemType;
     var max = this.data.upperLimit + 1;
     var problem = "";
-    console.log(problemType)
     if (problemType.indexOf('AdditionSubtraction') > -1 && problemType.indexOf('Multiplication') >-1){
       var problemTypeLocal = this.randomInt(1, 4);
     } else if (problemType.indexOf('AdditionSubtraction') > -1){
@@ -234,9 +233,9 @@ Page({
       var that = this
       var problemNum = 0
       if (type == 0) {
-        problemNum = this.data.problemNum + 1
+        problemNum = this.data.problemNum
       }else if(type==1){
-        problemNum = this.data.listenedNum + 1
+        problemNum = this.data.listenedNum
       }
 
       const innerAudioContext = wx.createInnerAudioContext();

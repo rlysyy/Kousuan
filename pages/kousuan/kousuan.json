@@ -1,14 +1,15 @@
 {
   "usingComponents": {
-    "van-button": "/miniprogram_npm/vant-weapp/button/index",
-    "van-col": "/miniprogram_npm/vant-weapp/col/index",
-    "van-row": "/miniprogram_npm/vant-weapp/row/index",
-    "van-field": "/miniprogram_npm/vant-weapp/field/index",
-    "van-picker": "/miniprogram_npm/vant-weapp/picker/index",
-    "van-stepper": "/miniprogram_npm/vant-weapp/stepper/index",
-    "van-panel": "/miniprogram_npm/vant-weapp/panel/index",
-    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
-    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index",
-    "van-toast": "/miniprogram_npm/vant-weapp/toast/index"
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-col": "/miniprogram_npm/@vant/weapp/col/index",
+    "van-row": "/miniprogram_npm/@vant/weapp/row/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-picker": "/miniprogram_npm/@vant/weapp/picker/index",
+    "van-stepper": "/miniprogram_npm/@vant/weapp/stepper/index",
+    "van-panel": "/miniprogram_npm/@vant/weapp/panel/index",
+    "van-checkbox": "/miniprogram_npm/@vant/weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram_npm/@vant/weapp/checkbox-group/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index",
+    "van-circle": "/miniprogram_npm/@vant/weapp/circle/index"
   }
 }
